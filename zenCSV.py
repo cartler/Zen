@@ -14,13 +14,11 @@ def prepareUrls(baseUrl):
     urls = []
     global pd
 
-    print(list(pd.columns))
-
     for index in range(len(pd)):
         # print(pd.loc[0,'com'])
-        params = list(pd.columns)
-        aa = baseUrl.format(com='111',id='222')
-        print(aa)
+        param = pd.ix[index].to_dict()
+        url = baseUrl.format(param = param)
+        urls.append(url)
 
     return urls
 
@@ -28,7 +26,8 @@ def prepareUrls(baseUrl):
 if __name__ == '__main__':
     pd = pandas.read_csv('example_data.csv')
     # pdi = pd.reindex
-    print(pd['com'])
+    # print(pd['com'])
+    print(pd.ix[0].to_dict())
     # val = pd.iloc[0]
     # print(val)
 
